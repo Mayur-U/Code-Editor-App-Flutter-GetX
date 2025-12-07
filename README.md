@@ -1,133 +1,109 @@
-📘 Code Editor App (Flutter + GetX)
+# 📘 Code Editor App (Flutter + GetX)
 
-A simple mobile code editor built using Flutter and GetX, created as part of an internship assignment.
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+![GetX](https://img.shields.io/badge/State-GetX-purple?style=for-the-badge)
 
-The app allows users to:
+A simple mobile code editor built using **Flutter** and **GetX**, created as part of an internship assignment. The app focuses on a clean UI, simulated code execution, and intelligent help features.
 
-Write code
+---
 
-Run it with simulated output
+## ✨ Features
 
-Automatically fix basic mistakes
+### 📝 Code Editor
+* Built using `code_text_field` for syntax highlighting.
+* Clean, monospace editor environment.
+* **Reactive UI:** Live text updates managed by GetX.
+* Fully responsive design.
 
-Ask for help using a built-in help panel
+### ▶️ Run (Simulated Execution)
+The "Run" button simulates a compiler/interpreter output based on predefined logic rules. This meets the assignment requirement to "show output or errors in a console."
 
-✨ Features
-📝 Code Editor
+| Scenario | Input | Output |
+| :--- | :--- | :--- |
+| **Standard Print** | `print("Hello")` | `Hello` |
+| **Missing Bracket** | `missing )` | `Syntax error: missing ')'` |
+| **Missing Brace** | `missing }` | `Syntax error: missing '}'` |
+| **Generic Error** | `contains error` | `Simulated error detected.` |
+| **Empty** | *(empty)* | `No code to run.` |
+| **Default** | *(Anything else)* | `Program executed successfully.` |
 
-Built using code_text_field
+### 🧹 Auto-Fix
+The Auto-Fix button automatically improves code formatting and cleans up syntax:
+* ✅ Adds missing semicolons.
+* ✅ Cleans extra whitespace.
+* ✅ Formats indentation consistently.
 
-Clean monospace editor
+### 💬 Help Panel
+A side panel that provides context-aware help using keyword matching:
+* **"run"** → Explains how to execute code.
+* **"fix"** → Explains the auto-fix functionality.
+* **"error"** → Provides troubleshooting tips.
+* **"indent"** → Explains formatting rules.
 
-Live text updates using GetX
+---
 
-Simple, responsive UI
+## 🛠️ Tech Stack
 
-▶️ Run (Simulated Execution)
+* **Framework:** Flutter 3.x
+* **Language:** Dart 3.x
+* **State Management:** GetX (State + Dependency Injection)
+* **Packages:**
+    * `code_text_field`
+    * `highlight`
 
-The Run button simulates output using simple rules:
+---
 
-✔ Supported:
-Input	Output
-print("Hello")	Hello
-missing )	Syntax error: missing ')'
-missing }	Syntax error: missing '}'
-contains error	Simulated error detected.
-empty input	No code to run.
-anything else	Program executed successfully.
+## 📂 Project Structure
 
-This meets the requirement: “show output or errors in a console”.
-
-🧹 Auto-Fix
-
-The Auto Fix button improves code formatting:
-
-Adds missing semicolons
-
-Cleans extra whitespace
-
-Formats indentation consistently
-
-(Note: Auto-Fix does not insert missing parentheses — as per your final working version.)
-
-💬 Help Panel
-
-A help icon opens a side panel where users can ask questions.
-
-The help system uses keyword matching to respond.
-
-Example keywords:
-
-run → how to run code
-
-fix → about auto-fix
-
-error → troubleshooting
-
-indent → formatting info
-
-📂 Project Structure
+```text
 lib/
- ├── main.dart               # App entry point
- ├── editor_page.dart        # UI for editor, console, buttons
- ├── editor_controller.dart  # Run logic + Auto-Fix trigger
- ├── help_controller.dart    # Keyword help system
- ├── autofix_service.dart    # Auto-Fix formatting logic
- └── app_bindings.dart       # GetX dependency injection
+├── main.dart              # App entry point
+├── editor_page.dart       # UI for editor, console, buttons
+├── editor_controller.dart # Run logic + Auto-Fix trigger
+├── help_controller.dart   # Keyword help system
+├── autofix_service.dart   # Auto-Fix formatting logic
+└── app_bindings.dart      # GetX dependency injection
+```
 
-🛠️ Tech Stack
+---
 
-Flutter 3.x
+## 🚀 Getting Started
 
-Dart 3.x
+Follow these steps to run the project locally.
 
-GetX (state management + DI)
-
-code_text_field
-
-highlight
-
-🚀 Running the App
-1️⃣ Install dependencies
+### 1️⃣ Install Dependencies
+```bash
 flutter pub get
+```
 
-2️⃣ Run on a device
+### 2️⃣ Run on Device
+```bash
 flutter run
+```
 
-3️⃣ Build an APK
+### 3️⃣ Build APK (Release)
+```bash
 flutter build apk --release
+```
 
-🧪 Example Usage
-Run Test
+---
 
-Input:
+## 🧪 Example Usage
 
-print("Hello World")
+**1. Run Test**
+> **Input:** `print("Hello World")`
+>
+> **Output:** `Hello World`
 
+**2. Syntax Error Test**
+> **Input:** `print("Hello"`
+>
+> **Output:** `Syntax error: missing ')'`
 
-Output:
-
-Hello World
-
-Syntax Error Test
-
-Input:
-
-print("Hello"
-
-
-Output:
-
-Syntax error: missing ')'
-
-Auto-Fix Test
-
-Input:
-
-print("hi"
-
-
-
-After Auto-Fix:
-
-Output : hi
+**3. Auto-Fix Test**
+> **Input:** `print("hi"`
+>
+> **Action:** Click Auto-Fix
+>
+> **Result:** Code updates to `print("hi");` and output runs successfully.
